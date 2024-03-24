@@ -1,0 +1,40 @@
+# Billion-Row challenge in Deno with Typescript
+
+## Inspiration - Primeagen reading the Article about this by Renato Pereira
+Primeagen Video: https://www.youtube.com/watch?v=SZ1PDS7iRU8
+Original Blogpost: https://r2p.dev/b/2024-03-18-1brc-go/#:~:text=One%20Billion%20Row%20Challenge%20in%20Golang%20%2D%20From%2095s%20to%201.96s
+
+Seems like this is the original challenge: 
+https://www.morling.dev/blog/one-billion-row-challenge/
+
+## Rules 
+
+Your mission, should you decide to accept it, is deceptively simple: 
+1. Write a TS program for retrieving temperature measurement values from a text file and 
+2. calculating the min, mean (Durchschnittstemperatur), and max temperature per weather station. 
+
+### Input
+A text file with 1.000.000.000 rows with data formatted like 
+   ```
+    Hamburg;12.0
+    Bulawayo;8.9
+    Palembang;38.8
+    St. John's;15.2
+    Cracow;12.6
+   ```
+
+### Output 
+
+```
+{Abha=5.0/18.0/27.4, Abidjan=15.7/26.0/34.1, Abéché=12.1/29.4/35.6, Accra=14.7/26.4/33.1, Addis Ababa=2.1/16.0/24.3, Adelaide=4.1/17.3/29.7, ...}
+```
+
+## What do I need to do conceptually? 
+
+1. Read each line of the input 
+2. Process the Line 
+    1. find the wheather station in the cache 
+    2. check wether the current value changes _min_ or _max_ of this station, in this case store it 
+    3. store the _sum_ and the _count_, to be able to generate the mean temp for each station later
+3. Alphabetically order this list of stations and calculate mean temp for each station  
+4. Output
